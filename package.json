@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "4.17.1",
-    "mongodb": "3.6.9"
+    "mongodb": "3.6.9",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {},
   "description": ""
