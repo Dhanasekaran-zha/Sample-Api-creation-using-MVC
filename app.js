@@ -6,18 +6,21 @@ require('dotenv').config()
 const authRoutes = require('./Authentication/AuthRoutes')
 require('./database/authdb')
 
+const { verifyAccessToken } = require('./Authentication/JWTHelper')
+
+
 const app = express()
 
 app.use(morgan('dev'))
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/', async (req, res, next) => {
+app.get('/', verifyAccessToken, async (req, res, next) => {
     res.send("Hello")
 })
 
-app.use('/auth',authRoutes)
+app.use('/auth', authRoutes)
 
 app.use(async (req, res, next) => {
 
